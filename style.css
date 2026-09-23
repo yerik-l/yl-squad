@@ -37,8 +37,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
 .creator{display:flex;align-items:center;gap:12px}
 .creator img{width:48px;height:48px;border-radius:50%;background:var(--panel2)}
 .creator .name{font-weight:700}
-.preview{width:100%;aspect-ratio:9/16;background:#000;border-radius:12px;object-fit:contain;display:block}
-.drop{border:2px dashed var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted);cursor:pointer}
+.preview{width:100%;max-height:560px;aspect-ratio:9/16;background:#000;border-radius:12px;object-fit:contain;display:block}
+.drop{display:block;border:2px dashed var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted);cursor:pointer}
 .drop:hover{border-color:var(--accent2)}
 label.field{display:block;font-weight:600;margin:18px 0 6px}
 input[type=text],textarea,select{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit}
