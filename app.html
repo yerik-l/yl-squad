@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio · YL Imagination Squad Automation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><span class="logo">YL</span>YL Imagination Squad Automation</a>
+  <nav><a href="app.html">Studio</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+</div></header>
+
+<main class="wrap">
+  <!-- Not connected -->
+  <section id="connect" class="hero center hidden">
+    <h1>Connect your TikTok account</h1>
+    <p style="margin:0 auto">You'll sign in on TikTok and approve access. We only request your basic profile and permission to post the videos you choose.</p>
+    <p style="margin-top:24px"><button class="btn" id="btnConnect">Continue with TikTok</button></p>
+    <p id="connectMsg" class="muted small"></p>
+  </section>
+
+  <!-- Connected -->
+  <section id="studio" class="app hidden">
+    <div>
+      <div class="card">
+        <div class="creator">
+          <img id="avatar" alt="">
+          <div>
+            <div class="small muted">Posting to TikTok account</div>
+            <div class="name" id="nickname">…</div>
+            <div class="small muted" id="username"></div>
+          </div>
+        </div>
+        <p style="margin:14px 0 0"><button class="btn secondary" id="btnLogout" style="padding:8px 14px;font-size:13px">Disconnect</button></p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 style="margin:0 0 10px">Video</h3>
+        <div id="queueWrap" class="hidden">
+          <div class="small muted" style="margin-bottom:8px">Prepared for you</div>
+          <div class="queue" id="queue"></div>
+          <div class="small muted" style="margin:12px 0 8px">or upload a new one</div>
+        </div>
+        <label class="drop" id="drop">
+          <input type="file" id="file" accept="video/mp4,video/quicktime,video/webm" hidden>
+          <strong>Choose a video</strong><br><span class="small">MP4, MOV or WebM</span>
+        </label>
+        <p id="uploadMsg" class="small muted"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px">Preview</h3>
+      <video id="preview" class="preview" controls playsinline></video>
+      <p class="small muted" id="durationMsg"></p>
+
+      <label class="field" for="title">Title</label>
+      <textarea id="title" maxlength="2200" placeholder="Write a title / caption for your post"></textarea>
+      <div class="small muted"><span id="titleCount">0</span> / 2200</div>
+
+      <label class="field" for="privacy">Who can view this video</label>
+      <select id="privacy">
+        <option value="" selected disabled>Select privacy</option>
+      </select>
+      <p class="small muted" id="privacyHint"></p>
+
+      <label class="field">Allow users to</label>
+      <div class="check"><input type="checkbox" id="allowComment"><label for="allowComment">Comment</label></div>
+      <div class="check"><input type="checkbox" id="allowDuet"><label for="allowDuet">Duet</label></div>
+      <div class="check"><input type="checkbox" id="allowStitch"><label for="allowStitch">Stitch</label></div>
+      <p class="small muted" id="interactionHint"></p>
+
+      <div class="row" style="margin-top:10px">
+        <div><strong>Disclose video content</strong><small>Turn on to disclose that this video promotes goods or services in exchange for something of value. Your video could promote yourself, a third party, or both.</small></div>
+        <label class="switch"><input type="checkbox" id="disclose"><span></span></label>
+      </div>
+      <div id="discloseBox" class="sub hidden">
+        <div class="check"><input type="checkbox" id="yourBrand"><label for="yourBrand"><strong>Your brand</strong><br><span class="small muted">You are promoting yourself or your own business. This video will be classified as Brand Organic.</span></label></div>
+        <div class="check"><input type="checkbox" id="brandedContent"><label for="brandedContent"><strong>Branded content</strong><br><span class="small muted">You are promoting another brand or a third party. This video will be classified as Branded Content.</span></label></div>
+        <div id="discloseLabel" class="notice hidden"></div>
+        <div id="discloseNeed" class="notice warn">You need to indicate if your content promotes yourself, a third party, or both.</div>
+      </div>
+
+      <div class="row">
+        <div><strong>AI-generated content</strong><small>Turn on if this video was made or significantly edited with AI.</small></div>
+        <label class="switch"><input type="checkbox" id="aigc"><span></span></label>
+      </div>
+
+      <p class="small muted" id="declaration" style="margin-top:16px"></p>
+
+      <p><button class="btn" id="btnPublish" disabled style="width:100%">Publish to TikTok</button></p>
+      <div id="publishMsg" class="notice hidden"></div>
+    </div>
+  </section>
+
+  <section id="loading" class="hero center"><p class="muted" style="margin:0 auto">Loading…</p></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 YL Imagination Squad · Kissimmee, Florida, USA</span>
+  <span><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></span>
+</div></footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
