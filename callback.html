@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connecting · YL Imagination Squad Automation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap hero center">
+  <h1 id="h">Connecting your TikTok account…</h1>
+  <p id="m" class="muted" style="margin:0 auto"></p>
+  <p><a class="btn secondary hidden" id="back" href="app.html">Back to Studio</a></p>
+</main>
+<script src="config.js"></script>
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const fail = (msg) => {
+    document.getElementById("h").textContent = "Couldn't connect";
+    document.getElementById("m").textContent = msg;
+    document.getElementById("back").classList.remove("hidden");
+  };
+  if (q.get("error")) return fail(q.get("error_description") || q.get("error"));
+  try {
+    const r = await fetch(YL_CONFIG.api, {
+      method: "POST",
+      headers: { "content-type": "application/json", apikey: YL_CONFIG.anonKey },
+      body: JSON.stringify({ action: "callback", code: q.get("code"), state: q.get("state") }),
+    });
+    const j = await r.json();
+    if (!r.ok) return fail(j.error || "Unknown error");
+    try { localStorage.setItem("yl_session", j.session); } catch (e) { sessionStorage.setItem("yl_session", j.session); }
+    location.replace("app.html");
+  } catch (e) { fail(String(e)); }
+})();
+</script>
+</body>
+</html>
